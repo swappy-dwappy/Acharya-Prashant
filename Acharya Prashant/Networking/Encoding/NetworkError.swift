@@ -7,8 +7,19 @@
 
 import Foundation
 
-enum NetworkError: String, Error {
-    case parametersNil = "Parameters were nil."
-    case encodingFailed = "Parameter encoding failed."
-    case missingURL = "URL is nil."
+enum NetworkError: LocalizedError {
+    case parametersNil
+    case encodingFailed
+    case missingURL
+    
+    var errorDescription: String? {
+        switch self {
+        case .parametersNil:
+            return "Parameters were nil."
+        case .encodingFailed:
+            return "Parameter encoding failed."
+        case .missingURL:
+            return "URL is nil."
+        }
+    }
 }
